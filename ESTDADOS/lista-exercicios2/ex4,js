@@ -1,0 +1,19 @@
+/* Crie uma função que recebe um vetor e um número. Ela deve mostrar todos os índices onde
+esse número aparece no vetor, e não só apenas o primeiro e/ou último índice em que o
+número aparece (como nos métodos indexOf e lastIndexOf). */
+
+function encontrarIndices(vetor, numero) {
+    var indices = [];
+    for (var i = 0; i < vetor.length; i++) {
+        if (vetor[i] === numero) {
+            indices.push(i);
+        }
+    }
+
+    return indices;
+}
+
+// Testando o código:
+var vetor = [1, 3, 2, 4, 2, 5, 2];
+var numero = 2;
+console.log("Índices onde o número", numero, "aparece dentro do vetor:", encontrarIndices(vetor, numero));
