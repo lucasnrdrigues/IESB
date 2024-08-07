@@ -10,5 +10,133 @@
         <li><a href="./index.html">Página Principal</a></li>
         <li><a href="./tabela.html">Tabela</a></li>
     </ul>
+
+    <h1>Usuários</h1>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-actions button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Formulário de Cadastro</h2>
+    <form>
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+        <div class="form-group">
+            <label>Sexo:</label>
+            <input type="radio" id="masculino" name="sexo" value="masculino" required>
+            <label for="masculino">Masculino</label>
+            <input type="radio" id="feminino" name="sexo" value="feminino" required>
+            <label for="feminino">Feminino</label>
+        </div>
+        <div class="form-group">
+            <label for="uf">UF:</label>
+            <select id="uf" name="uf" required>
+                <option value="">Selecione</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required>
+        </div>
+        <div class="form-group">
+            <label>Hobbies:</label>
+            <input type="checkbox" id="hobby1" name="hobbies" value="Hobby1">
+            <label for="hobby1">Música</label><br>
+            <input type="checkbox" id="hobby2" name="hobbies" value="Hobby2">
+            <label for="hobby2">Futebol</label><br>
+            <input type="checkbox" id="hobby3" name="hobbies" value="Hobby3">
+            <label for="hobby3">Artes</label><br>
+            <input type="checkbox" id="hobby4" name="hobbies" value="Hobby4">
+            <label for="hobby4">Jogos</label><br>
+            <input type="checkbox" id="hobby5" name="hobbies" value="Hobby5">
+            <label for="hobby5">Cozinhar</label>
+        </div>
+        <div class="form-group">
+            <label for="observacao">Observação:</label>
+            <textarea id="observacao" name="observacao" rows="4" required></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Salvar</button>
+            <button type="reset">Limpar</button>
+            <button type="button" onclick="">Voltar</button>
+        </div>
+    </form>
 </body>
 </html>
