@@ -1,7 +1,7 @@
-import { Alert, Container } from "react-bootstrap"; //Dê Ctrl + barra para puxar o item certo!
+
+import { Alert, Container } from "react-bootstrap";
 import Cabecalho from "../components/Cabecalho";
 import Link from "next/link";
-
 
 export default function Fundamentos() {
 
@@ -9,20 +9,17 @@ export default function Fundamentos() {
         <>
             <Cabecalho titulo="Fundamentos" />
 
-                <Container>
+            <Container>
+                <Alert>
+                    Atenção! Preste muita atenção.
+                </Alert>
 
-                    <Alert>
-                        Atenção! Preste muita Atenção
-                    </Alert>
+                <Link href="/">Página Inicial</Link><br />
 
-                    <Link href="/">Página Inicial</Link><br />
-
-                    <h1>Fundamentos</h1>
-                    <p>Sucesso</p>
-
-                </Container>
-
-            <Cabecalho />
+                <h1>Fundamentos</h1>
+                <p>Sucesso</p>
+                <Cabecalho titulo="Cabeçalho de baixo" />
+            </Container>
         </>
     )
 }
