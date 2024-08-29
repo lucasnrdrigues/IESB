@@ -2,7 +2,7 @@
 
 
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
-import Pagina from "../components/pagina2.js"
+import Pagina from "../components/Pagina2.js"
 
 
 
