@@ -14,10 +14,12 @@ export default function Page() {
 
     useEffect(() => {
         apiMovie.get('movie/now_playing').then(resultado => {
-            setFilmes(resultado.data.results)
+            setFilmes(resultado.data.results) //o results puxa todos os detalhes do filme
         })
     }, [])
 
+
+    // Esse md depois de Row embaixo é o tamanho da linha, tem como fazer isso com a coluna também
     return (
         <Pagina titulo="Filmes em Cartaz">
 

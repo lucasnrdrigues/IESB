@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function Page({ params }) {
     const [filme, setFilme] = useState(null);
-    const [atores, setAtores] = useState([]);
+    const [atores, setAtores] = useState([]); //Como queremos vários atores, usamos [], pois será um array e não um objeto!
     const router = useRouter(); // Inicializar useRouter
 
     useEffect(() => {
