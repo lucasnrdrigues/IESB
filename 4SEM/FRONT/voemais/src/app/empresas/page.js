@@ -38,7 +38,11 @@ export default function Page() {
                         <tr>
                             <td>1</td>
                             <td>{item.nome}</td>
-                            <td> <Link href={item.site}> <img src={item.logo} alt={item.nome} width={100}></img></Link></td>
+                            <td>
+                                <a href={item.site} target="_blank">
+                                    <img src={item.logo} width={100} />
+                                </a>
+                            </td>
                         </tr>
 
                     ))}
