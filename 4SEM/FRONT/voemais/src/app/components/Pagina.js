@@ -7,30 +7,41 @@ export default function Pagina(props) {
                 <Container>
                     <Navbar.Brand href="/">Fundamentos</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="/fundamentos">Fundamentos</Nav.Link>
-                        <Nav.Link href="/clientes">Clientes</Nav.Link>
-                        <Nav.Link href="/array">Array</Nav.Link>
-                        <Nav.Link href="/objetos">Carros</Nav.Link>
-                        <Nav.Link href="/nomes">Nomes</Nav.Link>
-                        <Nav.Link href="/numeros">Números</Nav.Link>
-                        <Nav.Link href="/disney">Disney</Nav.Link>
-                        <NavDropdown title="Disney" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/disney">
-                               Parágrafo
+                        <NavDropdown title="Filmes" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/filmes/categoria/popular">
+                               Populares
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/disney/cards">
-                               Cards
+                            <NavDropdown.Item href="/filmes/categoria/now_playing">
+                               Em cartaz
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/disney/tabela">
-                                Tabela
+                            <NavDropdown.Item href="/filmes/categoria/upcoming">
+                                Em Breve
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/disney/carrossel">
-                                Carrossel
+                            <NavDropdown.Item href="/filmes/categoria/top_rated">
+                                Bem avaliados
                             </NavDropdown.Item>
                         </NavDropdown>
+                        <NavDropdown title="Séries" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/series/categoria/popular">
+                               Populares
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="/series/categoria/on_the_air">
+                               No ar
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="/series/categoria/airing_today">
+                                Estreando
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="/series/categoria/top_rated">
+                                Bem avaliados
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link href="/atores">Atores</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
@@ -39,7 +50,7 @@ export default function Pagina(props) {
                 <h1>{props.titulo}</h1>
             </div>
 
-            <Container>
+            <Container className="my-3">
                 {props.children}
             </Container>
         </>

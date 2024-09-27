@@ -3,21 +3,28 @@
 import Pagina from "@/app/components/Pagina";
 import { Formik } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button, Form } from "react-bootstrap";
 import { FaCheck } from "react-icons/fa";
 import { MdOutlineArrowBack } from "react-icons/md";
 
 export default function Page() {
 
+    const route = useRouter() //É do next navigation!!!!!
+
     function salvar(dados){
-        console.log(dados)
+        const empresas = JSON.parse(localStorage.getItem('empresas')) || []
+        empresas.push(dados);
+        localStorage.setItem('empresas', JSON.stringify(empresas))
+        return route.push('/empresas') //Depois que salvar, ele volta para a página /empresas
     }
 
     return (
-        <Pagina titulo="Empresas">
+        <Pagina titulo="Empresa">
+
             <Formik
-            initialValues= {{name: '', logo: ''}}
-            onSubmit={values=> salvar(values)}
+                initialValues={{nome: '', logo: ''}}
+                onSubmit={values=>salvar(values)}
             >
                 {({
                     values,
@@ -38,23 +45,33 @@ export default function Page() {
                             <Form.Label>Logo</Form.Label>
                             <Form.Control 
                                 type="text" 
-                                name="logo" 
+                                name="logo"
                                 value={values.logo}
                                 onChange={handleChange('logo')}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="site">
+                            <Form.Label>Site</Form.Label>
+                            <Form.Control 
+                                type="text" 
+                                name="site"
+                                value={values.site}
+                                onChange={handleChange('site')}
                             />
                         </Form.Group>
                         <div className="text-center">
                             <Button onClick={handleSubmit} variant="success">
                                 <FaCheck /> Salvar
                             </Button>
-                            <Link href="/empresas/create"
-                                className="btn btn-danger ms-3"
+                            <Link
+                                href="/empresas"
+                                className="btn btn-danger ms-2"
                             >
-                                <MdOutlineArrowBack />Voltar
+                                <MdOutlineArrowBack /> Voltar
                             </Link>
                         </div>
                     </Form>
-                    )}
+                )}
             </Formik>
         </Pagina>
     )
