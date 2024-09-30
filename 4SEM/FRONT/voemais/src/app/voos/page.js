@@ -11,14 +11,14 @@ export default function Page() {
     // const empresas = JSON.parse(localStorage.getItem('empresas'))
 
     //COloque dentro da variavel empresas isso(local...) OU isso(no caso é [])
-    let aeroportos = JSON.parse(localStorage.getItem('aeroportos')) || []
+    let voos = JSON.parse(localStorage.getItem('voos')) || []
     //OBS: Tem como a gente utilizar o if e else também
 
     return (
-        <Pagina titulo="Aeroportos">
+        <Pagina titulo="Voos">
 
             <Link
-                href="/aeroportos/create"
+                href="/voos/create"
                 className="btn btn-primary mb-3"
             >
                 <IoIosAirplane />
@@ -28,23 +28,29 @@ export default function Page() {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nome</th>
-                        <th>Sigla</th>
-                        <th>UF</th>
-                        <th>Cidade</th>
-                        <th>País</th>
+                        <th>Internacional</th>
+                        <th>Identificador</th>
+                        <th>Data Check-in</th>
+                        <th>Data Embarque</th>
+                        <th>Origem</th>
+                        <th>Destino</th>
+                        <th>Empresa</th>
+                        <th>Preço</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {aeroportos.map(item => (
+                    {voos.map(item => (
 
                         <tr>
                             <td>1</td>
-                            <td>{item.nome}</td>
-                            <td>{item.sigla}</td>
-                            <td>{item.uf}</td>
-                            <td>{item.cidade}</td>
-                            <td>{item.pais}</td>
+                            <td>{item.internacional}</td>
+                            <td>{item.identificador}</td>
+                            <td>{item.checkin}</td>
+                            <td>{item.embarque}</td>
+                            <td>{item.origem}</td>
+                            <td>{item.destino}</td>
+                            <td>{item.empresa}</td>
+                            <td>{item.preco}</td>
                         </tr>
                     ))}
                 </tbody>

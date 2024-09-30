@@ -11,14 +11,14 @@ export default function Page() {
     // const empresas = JSON.parse(localStorage.getItem('empresas'))
 
     //COloque dentro da variavel empresas isso(local...) OU isso(no caso é [])
-    let aeroportos = JSON.parse(localStorage.getItem('aeroportos')) || []
+    let passageiros = JSON.parse(localStorage.getItem('passageiros')) || []
     //OBS: Tem como a gente utilizar o if e else também
 
     return (
-        <Pagina titulo="Aeroportos">
+        <Pagina titulo="Passageiros">
 
             <Link
-                href="/aeroportos/create"
+                href="/passageiros/create"
                 className="btn btn-primary mb-3"
             >
                 <IoIosAirplane />
@@ -29,22 +29,22 @@ export default function Page() {
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>Sigla</th>
-                        <th>UF</th>
-                        <th>Cidade</th>
-                        <th>País</th>
+                        <th>Documento</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Data de Nascimento</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {aeroportos.map(item => (
+                    {passageiros.map(item => (
 
                         <tr>
                             <td>1</td>
                             <td>{item.nome}</td>
-                            <td>{item.sigla}</td>
-                            <td>{item.uf}</td>
-                            <td>{item.cidade}</td>
-                            <td>{item.pais}</td>
+                            <td>{item.documento}</td>
+                            <td>{item.email}</td>
+                            <td>{item.telefone}</td>
+                            <td>{item.nascimento}</td>
                         </tr>
                     ))}
                 </tbody>
