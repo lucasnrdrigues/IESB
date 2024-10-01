@@ -2,17 +2,33 @@
 
 import Pagina from "@/app/components/Pagina"
 import Link from "next/link"
-import { Table } from "react-bootstrap"
+import { useEffect, useState } from "react";
+import { Button, Table } from "react-bootstrap"
+import { FaRegEdit } from "react-icons/fa";
 import { IoIosAirplane } from "react-icons/io";
+import { MdDelete } from "react-icons/md";
 
 export default function Page() {
 
     //Para poder usar o .map em empresas, precisamos passar os dados para uma array, pois o localStorage retorna uma string
     // const empresas = JSON.parse(localStorage.getItem('empresas'))
 
-    //COloque dentro da variavel empresas isso(local...) OU isso(no caso é [])
-    let empresas = JSON.parse(localStorage.getItem('empresas')) || []
-    //OBS: Tem como a gente utilizar o if e else também
+    const [empresas, setEmpresas] = useState([])
+
+    useEffect(() => {
+        setEmpresas(JSON.parse(localStorage.getItem('empresas')) || [])
+    }, [])
+
+    function excluir(id){
+        if(confirm('Deseja realmente excluir o registro?')){
+            //Excluindo
+            const dados = empresas.filter(item => item.id != id)
+
+            //Agora precisamos pegar o array novo no localStorage
+            localStorage.setItem('empresas', JSON.stringify(dados))
+            setEmpresas(dados)
+        }
+    }
 
     return (
         <Pagina titulo="Empresas">
@@ -33,10 +49,19 @@ export default function Page() {
                     </tr>
                 </thead>
                 <tbody>
-                    {empresas.map(item => (
+                    {empresas.map((item, i) => (
+                        <tr key={item.id}>
+                            <td>
+                                <Link href={`/empresas/edit/${item.id}`}>
+                                    <FaRegEdit title="Editar" className="text-primary"/>
+                                </Link>
 
-                        <tr>
-                            <td>1</td>
+                                <MdDelete 
+                                    title="Excluir" 
+                                    className="text-danger"
+                                     onClick={() => excluir(item.id)}
+                                />
+                            </td>
                             <td>{item.nome}</td>
                             <td>
                                 <a href={item.site} target="_blank">
@@ -44,7 +69,6 @@ export default function Page() {
                                 </a>
                             </td>
                         </tr>
-
                     ))}
                 </tbody>
             </Table>
