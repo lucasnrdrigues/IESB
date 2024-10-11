@@ -1,42 +1,45 @@
 'use client'
 
-import Pagina from "@/app/components/Pagina";
-import Link from "next/link";
-import { Table } from "react-bootstrap";
-import { IoIosAirplane } from "react-icons/io";
-import { FaTrashAlt } from "react-icons/fa";
-import { FaPen } from "react-icons/fa";
+import Pagina from "@/components/Pagina"
+import Link from "next/link"
 import { useEffect, useState } from "react";
+import { Table } from "react-bootstrap"
+import { FaPlusCircle } from "react-icons/fa";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 export default function Page() {
-    const [voos, setVoos] = useState([]);
+
+    const [voos, setVoos] = useState([])
 
     useEffect(() => {
-        setVoos(JSON.parse(localStorage.getItem('voos')) || []);
-    }, []);
+        setVoos(JSON.parse(localStorage.getItem('voos')) || [])
+    }, [])
 
     function excluir(id) {
-        if (confirm('Deseja realmente excluir?')) {
-            const dados = voos.filter(item => item.id !== id);
-            localStorage.setItem('voos', JSON.stringify(dados));
-            setVoos(dados);
+        if (confirm('Deseja realmente excluir o registro?')) {
+            const dados = voos.filter(item => item.id != id)
+            localStorage.setItem('voos', JSON.stringify(dados))
+            setVoos(dados)
         }
     }
 
     return (
         <Pagina titulo="Voos">
-            <div className="d-flex justify-content-start mb-3">
-                <Link href="/voos/form" className="btn btn-dark me-2"><IoIosAirplane /> Criar Voo</Link>
-            </div>
+
+            <Link
+                href="/voos/form"
+                className="btn btn-primary mb-3"
+            >
+                <FaPlusCircle /> Novo
+            </Link>
 
             <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Internacional</th>
                         <th>Identificador</th>
-                        <th>Data Check-in</th>
-                        <th>Data Embarque</th>
+                        <th>Dt. Embarque</th>
                         <th>Origem</th>
                         <th>Destino</th>
                         <th>Empresa</th>
@@ -44,21 +47,20 @@ export default function Page() {
                     </tr>
                 </thead>
                 <tbody>
-                    {voos.map((item, index) => (
+                    {voos.map((item, i) => (
                         <tr key={item.id}>
                             <td>
                                 <Link href={`/voos/form/${item.id}`}>
-                                    <FaPen title='Editar' className="ms-2 me-2 text-primary" />
+                                    <FaRegEdit title="Editar" className="text-primary" />
                                 </Link>
-                                <FaTrashAlt
-                                    title='Excluir'
+                                <MdDelete
+                                    title="Excluir"
                                     className="text-danger"
-                                    onClick={() => excluir(item.id)} />
+                                    onClick={() => excluir(item.id)}
+                                />
                             </td>
-                            <td>{item.internacional}</td>
                             <td>{item.identificador}</td>
-                            <td>{item.checkin}</td>
-                            <td>{item.embarque}</td>
+                            <td>{item.data_embarque}</td>
                             <td>{item.origem}</td>
                             <td>{item.destino}</td>
                             <td>{item.empresa}</td>
@@ -68,5 +70,5 @@ export default function Page() {
                 </tbody>
             </Table>
         </Pagina>
-    );
+    )
 }
