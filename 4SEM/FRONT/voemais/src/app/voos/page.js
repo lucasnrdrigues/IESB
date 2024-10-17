@@ -7,6 +7,7 @@ import { IoIosAirplane } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaPen } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { MdDelete } from "react-icons/md";
 
 export default function Page() {
     const [voos, setVoos] = useState([]);
@@ -44,16 +45,18 @@ export default function Page() {
                     </tr>
                 </thead>
                 <tbody>
-                    {voos.map((item, index) => (
+                    {voos.map((item, i) => (
                         <tr key={item.id}>
                             <td>
                                 <Link href={`/voos/form/${item.id}`}>
-                                    <FaPen title='Editar' className="ms-2 me-2 text-primary" />
+                                <FaPen 
+                                title='Editar' className="ms-2 me-2 text-primary" />
                                 </Link>
+
                                 <FaTrashAlt
-                                    title='Excluir'
-                                    className="text-danger"
-                                    onClick={() => excluir(item.id)} />
+                                title='Excluir' 
+                                className="text-danger"
+                                onClick={() => excluir(item.id)} />
                             </td>
                             <td>{item.internacional}</td>
                             <td>{item.identificador}</td>

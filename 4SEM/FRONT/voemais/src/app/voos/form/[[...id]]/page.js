@@ -4,7 +4,7 @@ import Pagina from "@/app/components/Pagina";
 import { Formik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { FaCheck } from "react-icons/fa";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -12,9 +12,22 @@ import { v4 } from "uuid";
 
 export default function Page({ params }) {
     const route = useRouter();
+
     const voos = JSON.parse(localStorage.getItem('voos')) || [];
     const dados = voos.find(item => item.id == params.id);
     const voo = dados || { internacional: '', identificador: '', checkin: '', embarque: '', origem: '', destino: '', empresa: '', preco: '' };
+
+    const [aeroportos, setAeroportos] = useState([])
+
+    useEffect(() => {
+        setAeroportos(JSON.parse(localStorage.getItem('aeroporto')) || [])
+    }, [])
+
+    const [empresas, setEmpresas] = useState([])
+
+    useEffect(() => {
+        setEmpresas(JSON.parse(localStorage.getItem('empresas')) || [])
+    }, [])
 
     function salvar(dados) {
         if (voo.id) {
@@ -41,17 +54,17 @@ export default function Page({ params }) {
                     <Form>
                         <Form.Group className="mb-3" controlId="internacional">
                             <Form.Label>Internacional</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="internacional" 
+                            <Form.Control
+                                type="text"
+                                name="internacional"
                                 value={values.internacional}
                                 onChange={handleChange('internacional')}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="identificador">
                             <Form.Label>Identificador</Form.Label>
-                            <Form.Control 
-                                type="text" 
+                            <Form.Control
+                                type="text"
                                 name="identificador"
                                 value={values.identificador}
                                 onChange={handleChange('identificador')}
@@ -59,8 +72,8 @@ export default function Page({ params }) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="checkin">
                             <Form.Label>Data Check-in</Form.Label>
-                            <Form.Control 
-                                type="date" 
+                            <Form.Control
+                                type="date"
                                 name="checkin"
                                 value={values.checkin}
                                 onChange={handleChange('checkin')}
@@ -68,8 +81,8 @@ export default function Page({ params }) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="embarque">
                             <Form.Label>Data Embarque</Form.Label>
-                            <Form.Control 
-                                type="date" 
+                            <Form.Control
+                                type="date"
                                 name="embarque"
                                 value={values.embarque}
                                 onChange={handleChange('embarque')}
@@ -77,35 +90,53 @@ export default function Page({ params }) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="origem">
                             <Form.Label>Origem</Form.Label>
-                            <Form.Control 
-                                type="text" 
+                            <Form.Select
                                 name="origem"
                                 value={values.origem}
                                 onChange={handleChange('origem')}
-                            />
+                            >
+                                <option value=''>Selecione</option>
+                                {aeroportos.map(item => (
+                                    <option key={item.nome} value={item.nome}>
+                                        {item.nome}
+                                    </option>
+                                ))}
+                            </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="destino">
                             <Form.Label>Destino</Form.Label>
-                            <Form.Control 
-                                type="text" 
+                            <Form.Select
                                 name="destino"
                                 value={values.destino}
                                 onChange={handleChange('destino')}
-                            />
+                            >
+                                <option value=''>Selecione</option>
+                                {aeroportos.map(item => (
+                                    <option key={item.nome} value={item.nome}>
+                                        {item.nome}
+                                    </option>
+                                ))}
+                            </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="empresa">
                             <Form.Label>Empresa</Form.Label>
-                            <Form.Control 
-                                type="text" 
+                            <Form.Select
                                 name="empresa"
                                 value={values.empresa}
                                 onChange={handleChange('empresa')}
-                            />
+                            >
+                                <option value=''>Selecione</option>
+                                {empresas.map(item => (
+                                    <option key={item.nome} value={item.nome}>
+                                        {item.nome}
+                                    </option>
+                                ))}
+                            </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="preco">
                             <Form.Label>Preço</Form.Label>
-                            <Form.Control 
-                                type="text" 
+                            <Form.Control
+                                type="text"
                                 name="preco"
                                 value={values.preco}
                                 onChange={handleChange('preco')}
