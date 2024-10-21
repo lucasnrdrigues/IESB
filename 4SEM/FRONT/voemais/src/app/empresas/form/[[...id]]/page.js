@@ -46,48 +46,54 @@ function salvar(dados){
                     handleSubmit,
                     errors,
                 }) => {
-                        return (
-                            <Form>
-                                <Form.Group className="mb-3" controlId="nome">
-                                    <Form.Label>Nome</Form.Label>
-                                    <Form.Control 
-                                        type="text"
-                                        name="nome"
-                                        value={values.nome}
-                                        onChange={handleChange('nome')}
-                                    />
-                                    <div>{errors.nome}</div>
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="logo">
-                                    <Form.Label>Logo</Form.Label>
-                                    <Form.Control type="text"
-                                    name="logo"
-                                    value={values.logo}
-                                    onChange={handleChange('logo')}
-                                    />
-                                </Form.Group>
-        
-                                <Form.Group className="mb-3" controlId="site">
-                                    <Form.Label>Site</Form.Label>
-                                    <Form.Control type="text"
-                                    name="site"
-                                    value={values.site}
-                                    onChange={handleChange('site')}
-                                    />
-                                </Form.Group>
-        
-                                <div className="text-center">
-                                    <Button onClick={handleSubmit} variant="success">
-                                        Salvar  <FaCheck />
-                                    </Button>
-                                    <Link href="/empresas" className="btn btn-danger ms-3" >
-                                        <IoIosArrowRoundBack /> Voltar
-                                    </Link>
-                                </div>
-                            </Form>
-                        )
-                    }
-                }
+                    return (
+                        <Form>
+                            <Form.Group className="mb-3" controlId="nome">
+                                <Form.Label>Nome</Form.Label>
+                                <Form.Control 
+                                type="text"
+                                 name="nome"
+                                 value={values.nome}
+                                 onChange={handleChange('nome')}
+                                 isInvalid={errors.nome}
+                                  /> <Form.Control.Feedback type="invalid">
+                                  {errors.nome}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                            
+                            <Form.Group className="mb-3" controlId="logo">
+                                <Form.Label>Logo</Form.Label>
+                                <Form.Control type="text"
+                                 name="logo"
+                                 value={values.logo}
+                                 onChange={handleChange('logo')}
+                                 isInvalid={errors.logo}
+                                  />
+                                  <div className="text-danger">{errors.logo}</div>
+                            </Form.Group>
+    
+                            <Form.Group className="mb-3" controlId="site">
+                                <Form.Label>Site</Form.Label>
+                                <Form.Control type="text"
+                                 name="site"
+                                 value={values.site}
+                                 onChange={handleChange('site')}
+                                 isInvalid={errors.site}
+                                  />
+                                  <div className="text-danger">{errors.site}</div>
+                            </Form.Group>
+    
+                            <div className="text-center">
+                                <Button onClick={handleSubmit} variant="success">
+                                    Salvar  <FaCheck />
+                                </Button>
+                                <Link href="/empresas" className="btn btn-danger ms-3" >
+                                    <IoIosArrowRoundBack /> Voltar
+                                </Link>
+                            </div>
+                        </Form>
+                    )
+                } }
             </Formik>
         </Pagina>
     )
