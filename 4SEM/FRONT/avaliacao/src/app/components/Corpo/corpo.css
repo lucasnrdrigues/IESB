@@ -1,0 +1,32 @@
+.corpo {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../../../public/banner-topo.jpg);
+}
+
+.apresentacao {
+    color: white;
+    width:500px;
+    height: 465px;
+    margin-right: 150px;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 3%;
+}
+
+.formulario {
+    color: white;
+    width:500px;
+    height: 480px;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 3%;
+}
+
+.custom-placeholder::placeholder {
+    color: #ff0000; /* Verde do Bootstrap */
+    opacity: 0.6;
+  }
